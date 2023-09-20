@@ -505,3 +505,36 @@ To understand what project it is we describin it in `README.md`
 You can decorate your file by language `markdown`.
 
 There is instructions [markdown syntaxis](https://docs.github.com/ru/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+# Researching log 
+
+Log consist with hash (unic code), Author, Date and commit message.
+
+Short commits list we can get by `git log --oneline'
+
+Short cashe is unic too for this set.
+
+> [!NOTE] 
+> If you don't way out from commits log press `Q` (quit).
+
+`HEAD` indicate the last commit. `HEAD` - is file wich stores in service folder `.git`.
+
+You can sign `HEAD` instead hash of last commit.
+
+## Statuses 
+
+* `untracked` Git don't observe this file but see
+* `staged` - prepared file
+
+> [!NOTE]
+> Staging files sometime call `indexed` or `cached`.
+
+* `tracked` - opposite `untracked`. Commited and added files.
+* `modified`
+
+## `staged` and `modified` 
+
+`git add` makes temporary consistence only. If add file and then edit. Later consistence won't refreshed.
+
+For refresh press `git add` again.
+
