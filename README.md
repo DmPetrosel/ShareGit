@@ -538,3 +538,54 @@ You can sign `HEAD` instead hash of last commit.
 
 For refresh press `git add` again.
 
+# Messages decoration of commits 
+
+When output `git log --oneline` message placed during 72 symbols. 
+A lot of rules include item: "Message mustn't be bigger 72 symbols".
+
+## Message must be informative
+
+* Message must be sufficient short to easy read
+* Must be informative 
+
+## Decoration styles 
+
+It could be used imperative verbs, past verbs or nouns.
+
+## Corporative rules 
+
+A lot of companies use Jira - organization system of project and tasks. Every task have identificator.
+Writes identificator e.g. project and task number. `LGS-239` **LGS** (Logistic) and task 
+number 239.
+
+## Conventional Commits 
+
+Format is `<type>:<message>`.
+
+Type could be:
+* feat
+* fix 
+
+You can visil [linl](https://www.conventionalcommits.org/ru/v1.0.0-beta.4/#спецификация "Conventional commits") 
+to see description of rules.
+
+## GitHub - style 
+
+You can indicate link to task by `#<taskNumber>`. 
+
+This way GitHub bind commit and task.
+
+> [!NOTE] 
+> For messages on Russian reccomends use infinitives. `Добавить тесты для Pipka Service`,
+`Исправить ошибку #123`.
+
+> For messages on English recommends use imperative. E.g.: `Use library mega_lib_300`,
+`Fix exit button` etc.
+
+> This recomendation became hisorical, and many projects implicate that.
+
+# Diagrams Mermaid 
+
+Visit [link](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/ "Mermaid")
+with mermaid description. It is diagram code. 
+
