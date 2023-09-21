@@ -621,3 +621,18 @@ After editor suppose edit file name, but it is not necessary. Press `Enter`.
 1. Press `Esc`.
 2. Type sequence `:qu!`.
 3. Press `Enter`.
+
+# How to roll back 
+
+## Do unstage of changes - `git restore --staged <file>`
+
+## Roll back commit - `git reset --hard <commit hash>`
+
+Hash you can find in history.
+
+Be careful you can delete something you need.
+
+## Roll back changes wich don't get to commit or staging -`git restore <file>`
+
+You change file and now it have view `modified`. To reverse press `git restore <file>`.
+
