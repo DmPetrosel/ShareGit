@@ -589,3 +589,35 @@ This way GitHub bind commit and task.
 Visit [link](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/ "Mermaid")
 with mermaid description. It is diagram code. 
 
+# How to fix commit 
+
+`git commit --amend`
+
+> [!NOTE]
+> Option `--amend` works with last commit only.
+
+## Assume commit new files `git commit --amend --no-edit`
+
+```bash
+git add newFile.txt
+git commit --amend --no-edit
+```
+
+## Edit commit message - `git commit --amend -m "New message".
+
+## If editor opened
+
+* nano: Editing the top string and then press `Ctrl+X`( E**x**it)
+
+> [!NOTE] 
+> In letters like `^X`, `^G`. This symbol `^` means `Ctrl`.
+
+After exit nano suppose to save, press `y`.
+
+After editor suppose edit file name, but it is not necessary. Press `Enter`.
+
+* Vim: if you can not use Vim - exit and use flag `-m` for sign commit message.
+
+1. Press `Esc`.
+2. Type sequence `:qu!`.
+3. Press `Enter`.
