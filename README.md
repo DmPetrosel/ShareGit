@@ -636,3 +636,136 @@ Be careful you can delete something you need.
 
 You change file and now it have view `modified`. To reverse press `git restore <file>`.
 
+# Researching of changes in files 
+
+Often it necessary to know what changed difinitelly after determinate commit.
+
+Situations example: 
+
+* You want to do commit but want check if changes get to it. 
+* Yesterday your collegue made a commit with a message `small fix`, after
+tests of project get fault. To reason in situation need to look changes.
+
+This allow by command `git diff`.
+
+To look changes in `staged` we need use flag `--staged`: `git diff --staged`.
+
+`---a/%fileName%` - old file `+++b/%fileNeme` - new file.
+
+`@@ -1,10 +1,10 @@` means start with first string further ten strings changed.
+
+# Matching commits
+
+## Appenging string to file
+
+Command `echo` output that there is given to it. 
+
+By combining `echo` with symbols `>>`, that must be written on the screen 
+will be written to the file. 
+
+```bash
+$ cat file.txt
+First string 
+
+$ echo "Second string of file" >> file.txt
+$ cat file.txt
+First string 
+Second string of file
+```
+
+Operator `>>` could use with any command with ouptut on the screen something.
+
+Sole operator `>` redirect to file too but rewrite file whole. 
+
+```bash
+$ cat file.txt
+First string 
+$ echo "New string" > file.txt
+$ cat file.txt
+New string 
+```
+
+## Comparing commits 
+
+`git diff %hashA% %hashB%` - it output instruction list how to convert 
+state A to state B. If change plase between, instruction would reverse.
+
+# Igniring of files 
+
+Often there are files than don't need keep history changes. 
+
+* In case hiden files
+* In Git don't accepted to commit compillation results, sourse only.
+* IDE can create file with individual settings of project. IDE others people could misbehaviour.
+
+To ignore that files, it necessary create file `.gitignore` and write ignore files here.
+
+## How to fill `.gitignore`
+
+`.gitignore` - common text file. It add into root of repository and commit too.
+
+Into `.gitignore` add files list or templates.
+
+> [!NOTE]
+> Rules `gitignore` apply a new files (untracked) only.
+If file get in staging area already, rules don't apply.
+
+## Commentary 
+
+If string starts with `#` - it is a commentery. `gitignore` don't get into account it.
+
+## Plain file name
+
+```
+# for MacOS
+.DS_Store
+```
+This way Git will ignore files with name `DS_Store` in the root and nested folders. 
+
+## Asterisk (`*`)
+
+Any string even empty.
+
+## Question sign (`?`)
+
+Any symbol.
+
+## Square brackets 
+
+Square brackets constist one symbol from list signed inside.
+
+Enumeration symbols (`[abc]`) or dimesnion (`[a-z]`).
+
+## Slash (`/`)
+
+Slash indicates on catalogues. Is file starts with slash Git ignore all files or directories 
+in root directory only.
+
+`/todo.txt` - only root 
+
+And `subdir/todo.txt` tracked. 
+
+`spam.txt` - all folders.
+
+If sample and with slash means rule apply to folder.
+
+`build/` - ignore folder build.
+
+## Couple astericks `**`
+
+`**` - ignore several folder on way or zero.
+
+`docs/**/tmp`
+
+`*` - ignore one folder on the way
+
+`docs/*/tmp`
+
+## Invertion with exlamination sign (`!`)
+
+## `.gitignore` and `git status`
+
+Ignored files don't show in git status.
+
+If we need output press `git status --ignored`. This way show up `Ignored files`.
+
