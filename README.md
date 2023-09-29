@@ -769,3 +769,134 @@ Ignored files don't show in git status.
 
 If we need output press `git status --ignored`. This way show up `Ignored files`.
 
+# Clone repository
+
+## Clone repository - `git clone`
+
+We must got to GitHub repository, press **Code** and copy SSH key.
+
+Further press in console `git clone %SSHLink%`.
+
+To check if OK we can by `git remote -v`.
+
+# Execute Fork 
+
+If you want improve alien project. But you have not rights. You can copy repository 
+to own repository on GitHub.
+
+## What is Fork 
+
+Results of operation Fork won't depict on source repository.
+
+In process "fork" it is creating copy of all files and commiits and branches. 
+This copy will store in your account.
+
+Fork you cand do in GUI of GitHub.
+
+# Branches 
+
+# Why branch 
+
+Branch is isolatet version of project.
+
+Branches let to experiment with project in Git but preserve repository in stable state.
+Every memver of the team can work in own branch and don't disturb others. 
+Commits maden in one branch not visible in other. When work hte end branches possible 
+to concatinate.
+
+Branches useful for sole work. When write new features, need create new branch. 
+That branches allow to swithch between task for one person.
+
+## Show branches of project - `git branch`
+
+# Creating branch - `git branch <new_brunch_name>
+
+> [!NOTE] If slash exists in name of branch
+> Name of branch can conclude letters and numbers, and four symbols `.`,`-`,`_`,`/`.
+This symbols not mean something peculiar. Branches don't creating hierarchy. Like 
+directory divided by slash `/`.
+
+## Change branch - `git checkout <branch_name>`
+
+## Create branch and right change to it `git checkout -b <branch name>`
+
+# Comparing branches 
+
+# Compare branches `git diff <branch_name1> <branch_name2>`
+
+It possible use `git diff main <hash>`, also possible use indicator `HEAD`.
+
+# Navigation suffix `~`
+
+Navigation suffix `~N` count N commits back. Numeration starts with 0 (Zero).
+`~0` - commit oneself.
+ 
+`HEAD~1` further by temporary. `main~5` - fifth for branch `main`.
+
+For `~1` there is chortcut `~`(without number).
+
+# Branches merging 
+
+## Fulfil merge - `git merge <branch_name>
+
+First you must go to branch where we need add changes. Commonly it is main branch.
+
+Goto main branch and execute `git merge` with merging branch like parameter.
+
+## Delete branch after merging - `git branch -D <branch name>`
+
+> [!NOTE]
+> If you settle in branch wich want delete, it would error: `can not delete branch`.
+
+`git branch -D` have safe mode with flag `-d`. It delete branch if it wholly merged with
+another. Id est two branches become (or were) part of one history.
+
+If you created a branch with incorrect name occasionally, you can delete it by
+`git branch -d %branch_name%`.
+
+> [!WARNING]
+> Delting of local branch not delete repository branch.
+
+# Collision
+
+## How to solve a collision. Common recomendations.
+
+During merging Git spotlight files, wich can't unit. To solve a problem it necessary:
+
+1. Look file with conflict.
+2. Learn both parts - your and your collegue. Your aim - to assemble two versions into final
+and changes both parts don't loose. New version become actual.
+3. Delete or amend inactual changes by hand, id it exist.
+4. Prepare changes to saving and make a commit.
+
+# Return to GitHub
+
+## Send local branch to remote repository - `git push`
+
+First commit another branch `git push -u origin <branch_name>`.
+
+It is unnecessary to stay in consistence branch.
+
+# Creating pull request
+
+There is algorithm:
+
+1. Work in own branch
+2. End work and create pull request 
+3. Your collegues check code and leave comments. This is **code review** or **review**
+4. After final compliance you push your branch into the main.
+
+## Parts of pull request and what could happen 
+
+Every request have: 
+
+* Name - short decription supposeded changes.
+* Description - expanced description of changes. It is unnecessary.
+* Source branch - where you work
+* Aim branch - basic project branch where you want do changes.
+
+Results of request:
+
+* **merge** - supposeded changes accepted; code push into aim branch; pull request closing.
+* **close** - pull request closing without merging changes.
+
