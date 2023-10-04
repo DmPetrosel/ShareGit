@@ -690,7 +690,13 @@ New string
 `git diff %hashA% %hashB%` - it output instruction list how to convert 
 state A to state B. If change plase between, instruction would reverse.
 
-# Igniring of files 
+Unstaged files `git diff HEAD`.
+
+Difference for staged files `git diff -staged` or `git diff -cached`.
+
+`git status -v` is synonim for `-staged`.
+
+# Ignoring of files 
 
 Often there are files than don't need keep history changes. 
 
@@ -900,3 +906,74 @@ Results of request:
 * **merge** - supposeded changes accepted; code push into aim branch; pull request closing.
 * **close** - pull request closing without merging changes.
 
+# Get changes from remote repository 
+
+## Get changes from remote repository -`git pull`
+
+Algorythm:
+
+* Goto local repository and ensure you are in right branch (commonly it is `main` or `master`.
+* After you can enter command 
+
+```bash
+git pull
+```
+
+Often when work in big command branch `main` run away long further while you
+prepare your changes. And before creating pull request it's recommend pull changes 
+from basic branch. Merge it with your, decide all possible conflicts and do the `push`.
+
+```bash
+$ git checkout main # goto main or master
+$ git pull # pull new changes into main 
+$ git checkout my-branch # come back to work branch
+$ git merge main # get main into new branch my-branch
+$ git push -u origin my-branch # send branch my-branch to remote repository
+```
+
+# Fast-forward 
+
+Disabling of fast-forward lead to merge-commits wich save all information of merging branches.
+
+Fast-forward merge could to lead to information loss and it switch off.
+
+Fast-forward regime it's possible switch off with flag `--no-ff`.
+E.g. `git merge --no-ff add-docs` Turn off fast-forward forever with `merge.ff`:
+`git config [--global] merge.ff false`.
+
+# Non-fast-forward
+
+often commit message of merging don't transform. For this way it's convenient use `--no-edit`:
+`git merge --no-edit %another-branch%`
+
+If conflicts exists at commence Git try resolve it automathically.
+
+# Git push and fast-forward 
+
+Git push use fast forward default.
+
+If it is a conflict, it possible use **rebase**.
+
+**Rebase** line commits in order. When mergin possible conflicts. And it could break down repository.
+
+## `git push --force`
+
+`--force` streak disturbing commits. 
+
+# Conflicts 
+
+When merging branches and appearing conflict it's show up a new file with markers.  
+Delete markers and eliminate a conflict.  
+
+## Deciding conflict with vim 
+
+Use `git mergetool` to invoke `vimdiff`.
+
+## If branch `main` run away
+
+1. go to branch `main`
+2. Download new changes with `git pull`
+3. Goto your branch again 
+4. Make `git merge main` and decide conflict locally. As a result it's would be
+creating new commit of merging.
+5. Send changes of your branch by `git push`. Commit will get to your created pull request.
